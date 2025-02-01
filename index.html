@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Engineer Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" 
+        integrity="sha512-xh6E1KrN2uJXZTPgl+1e8P0kQ0Ivco1fN6fZ1K/SCx/gPl7z4C6B7L1FQ+I6Tg5FXxHuxDCUftFNdYgdz1c9kg==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Overall Color Scheme:
+       - Primary Accent: #00735C
+       - Body Background: #F7F7F7 (off-white)
+       - Alternate Section Background: #EFEFEF (light grey)
+       - Text Color: #333333 (dark grey)
+    */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #F7F7F7;
+      color: #333333;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Header and Navigation */
+    header {
+      background: #00735C;
+      color: #FFFFFF;
+      padding: 20px 0;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Social icon links */
+    .social-link {
+      font-size: 1.2rem;
+    }
+
+    /* Toggle Button for Terminal Mode */
+    .toggle-theme {
+      cursor: pointer;
+      border: 2px solid #00735C;
+      border-radius: 5px;
+      padding: 5px 10px;
+      background: #FFFFFF;
+      color: #00735C;
+    }
+
+    /* Sections */
+    section {
+      padding: 40px 0;
+    }
+
+    /* Alternate Section Background */
+    section:nth-child(even) {
+      background: #EFEFEF;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00735C;
+    }
+
+    /* About Section */
+    #about p, #about h3 {
+      max-width: 800px;
+      margin: 0 auto 1rem;
+      text-align: center;
+    }
+
+    .about-sub {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .profile-picture {
+      max-width: 100%;
+      width: 300px;
+      height: auto;
+      border-radius: 50%;
+    }
+
+    /* Technical Milestones Section */
+    #milestones .milestones-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .card {
+      background: #FFFFFF;
+      padding: 20px;
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: #00735C;
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    .card ul li {
+      margin-bottom: 8px;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      gap: 20px;
+      padding: 0 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .project {
+      background: #FFFFFF;
+      padding: 20px;
+      border-radius: 5px;
+      transition: transform 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+    }
+
+    .project h3, .project h4, .project a {
+      margin-bottom: 10px;
+      text-align: center;
+      color: #00735C;
+    }
+
+    /* Skills Section */
+    #skills ul {
+      list-style: none;
+      text-align: center;
+      padding: 0;
+    }
+
+    #skills li {
+      display: inline-block;
+      margin: 10px 15px;
+      padding: 5px 10px;
+      background: #FFFFFF;
+      border-radius: 5px;
+    }
+
+    /* Contact Section */
+    #contact .about-sub {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    /* Contact Form */
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    form input,
+    form textarea {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    form button {
+      padding: 10px;
+      border: none;
+      background: #00735C;
+      color: #FFFFFF;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background: #00735C;
+      color: #FFFFFF;
+    }
+
+    #terminal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #005F4B;
+      color: #FFFFFF;
+      font-family: 'Courier New', Courier, monospace;
+      display: none;
+      flex-direction: column;
+      padding: 20px;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+    .terminal-output {
+      flex: 1;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin-bottom: 10px;
+    }
+
+    .terminal-input-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .terminal-prompt {
+      margin-right: 5px;
+    }
+
+    .terminal-input-container input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #FFFFFF;
+      outline: none;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    /* Media Queries for Mobile Devices */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .nav-links {
+        justify-content: center;
+        width: 100%;
+      }
+      
+      nav .logo h1 {
+        font-size: 1.6rem;
+      }
+      
+      nav a, .toggle-theme {
+        font-size: 0.9rem;
+      }
+
+      .profile-picture {
+        margin: 0 auto;
+      }
+      
+      .card, .project {
+        width: 100%;
+      }
+      
+      section {
+        padding: 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header and Navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <h1>Boyul Kim</h1>
+        </div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#milestones">Milestones</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+          <!-- Social Icons for LinkedIn and GitHub -->
+          <a class="social-link" href="https://www.linkedin.com/in/boyul-kim/" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a class="social-link" href="https://github.com/boyul-kim" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <!-- Toggle Button for Terminal Mode -->
+          <button class="toggle-theme" id="themeToggle">LINUX TERMINAL MODE</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <div class="about-sub">
+          <div>
+            <p>
+              Hi! My name is Boyul Kim, and I am a software engineer with a strong foundation in distributed systems, networking concepts, and network programming. Proficient in Golang, C, C++, Python, and TypeScript, I specialize in building scalable, high-performance backend services that power critical infrastructure. My expertise spans network security, cloud computing, and real-time systems, with hands-on experience in microservices architecture, SDN, and Zero Trust security models.
+            </p>
+            <br>
+            <p>
+              I am highly interested in roles that involve backend engineering, distributed systems, and networking-focused development, especially those that allow me to work with low-level network programming, high-throughput systems, and scalable microservices architectures.
+            </p>
+          </div>
+          <img class="profile-picture" src="./profile_photo.jpg" alt="profile_photo">
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Milestones Section -->
+    <section id="milestones">
+      <div class="container">
+        <h2>Technical Milestones</h2>
+        <div class="milestones-container">
+          <div class="card">
+            <h3>Network & Socket Programming</h3>
+            <ul>
+              <li>Developed HTTP Proxy Server in C, Rust and Golang</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>SDN & Network Security</h3>
+            <ul>
+              <li>Developed SDN control & data switch logic</li>
+              <li>Used µONOS (Golang) and P4</li>
+              <li>Enabled fine-grained traffic management</li>
+              <li>Enhanced security policies</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Resource Monitoring</h3>
+            <ul>
+              <li>Built monitoring for 20+ Linux VMs</li>
+              <li>Used Kafka, PostgreSQL, and ETL pipelines</li>
+              <li>Optimized system performance</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Real-Time Collaboration</h3>
+            <ul>
+              <li>Designed synchronization mechanisms</li>
+              <li>Implemented WebSockets</li>
+              <li>Used Operational Transformation (Google Docs style application)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Cloud & Video Streaming</h3>
+            <ul>
+              <li>Enhanced cloud-based streaming</li>
+              <li>Reduced latency by 80%</li>
+              <li>Used AWS Elastic Transcoder & HLS</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Network Security & DevOps</h3>
+            <ul>
+              <li>Implemented Splunk-based traffic analysis</li>
+              <li>Deployed Kubernetes clusters</li>
+              <li>Integrated Redis-based caching</li>
+              <li>Automated Docker & CI/CD workflows</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="container">
+        <h2>Projects</h2>
+        <div>
+          <h4 style="text-align: center;">Passion for Network and Socket Programming</h4>
+          <p>
+            Beyond my professional work, I am deeply passionate about network and socket programming and regularly explore these concepts in my own time. I enjoy building custom TCP/UDP servers, optimizing low-level networking performance, and experimenting with socket-based communication protocols. Below are some of my projects:
+          </p>
+          <br>
+        </div>
+        <div class="projects-grid">
+          <div class="project">
+            <h3>HTTP Proxy Server</h3>
+            <p>
+              Used sockets to develop a HTTP proxy server.
+            </p>
+            <a href="url">View Repo Here</a>
+          </div>
+          <div class="project">
+            <h3>Mini SD-WAN</h3>
+            <p>
+              Mini SD-WAN to learn more about their inner workings.
+            </p>
+            <a href="url">View Repo Here</a>
+          </div>
+          <div class="project">
+            <h3>Google Docs Clone</h3>
+            <p>
+              A Google Docs clone that allows users to collaborate in real time using WebSockets and Operational Transformation.
+            </p>
+            <a href="url">View Repo Here</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="container">
+        <h2>Skills</h2>
+        <ul>
+          <li>Golang</li>
+          <li>Rust</li>
+          <li>C / C++</li>
+          <li>Python / FastAPI / Flask</li>
+          <li>TypeScript / Node.js / Express</li>
+          <li>SQL / PostgreSQL / MongoDB / Redis</li>
+          <li>Kafka / RabbitMQ</li>
+          <li>µONOS / P4 (SDN Programming)</li>
+          <li>Socket Programming / WebSockets</li>
+          <li>Microservice Architecture</li>
+          <li>Network Security / Zero Trust Architecture</li>
+          <li>Docker / Kubernetes</li>
+          <li>AWS (EC2, S3, Lambda, Elastic Transcoder)</li>
+          <li>CI/CD Pipelines</li>
+          <li>React</li>
+          <li>Angular</li>
+          <li>Html</li>
+          <li>CSS</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <div class="about-sub">
+          <div>
+            Email: <a href="mailto:boyulkim1@gmail.com">boyulkim1@gmail.com</a>
+          </div>
+          <div>
+            GitHub: <a href="https://github.com/boyul-kim" target="_blank">github.com/boyul-kim</a>
+          </div>
+          <div>
+            LinkedIn: <a href="https://www.linkedin.com/in/boyul-kim/" target="_blank">linkedin.com/in/boyul-kim</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Boyul Kim. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Terminal Mode Container (Hidden by default) -->
+  <div id="terminal">
+    <div id="terminal-output" class="terminal-output">
+Welcome to the Linux Terminal Mode.
+Type <span style="color:#FFFFFF;">ls</span> to see available directories.
+Type <span style="color:#FFFFFF;">cd &lt;directory&gt;</span> to change into a directory.
+Type <span style="color:#FFFFFF;">vi section.txt</span> to view the section contents.
+Type <span style="color:#FFFFFF;">cd ..</span> to go back.
+Type <span style="color:#FFFFFF;">exit</span> to leave terminal mode.
+    </div>
+    <div class="terminal-input-container">
+      <span class="terminal-prompt">user@portfolio:~$</span>
+      <input type="text" id="terminal-input" autofocus autocomplete="off" />
+    </div>
+  </div>
+
+  <script>
+    const sectionContent = {
+      "about": "About Me:\nHi! My name is Boyul Kim, and I am a software engineer with a strong foundation in distributed systems, networking concepts, and network programming. Proficient in Golang, C, C++, Python, and TypeScript, I specialize in building scalable, high-performance backend services. My expertise spans network security, cloud computing, and real-time systems, with hands-on experience in microservices architecture, SDN, and Zero Trust security models.",
+      "milestones": "Technical Milestones:\n\nNetwork & Socket Programming:\n- Developed HTTP Proxy Server in C, Rust and Golang.\n\nSDN & Network Security:\n- Developed SDN control & data switch logic.\n- Used µONOS (Golang) and P4.\n- Enabled fine-grained traffic management.\n- Enhanced security policies.\n\nResource Monitoring:\n- Built monitoring for 20+ Linux VMs.\n- Used Kafka, PostgreSQL, and ETL pipelines.\n- Optimized system performance.\n\nReal-Time Collaboration:\n- Designed synchronization mechanisms.\n- Implemented WebSockets.\n- Used Operational Transformation (Google Docs style application).\n\nCloud & Video Streaming:\n- Enhanced cloud-based streaming.\n- Reduced latency by 80%.\n- Used AWS Elastic Transcoder & HLS.\n\nNetwork Security & DevOps:\n- Implemented Splunk-based traffic analysis.\n- Deployed Kubernetes clusters.\n- Integrated Redis-based caching.\n- Automated Docker & CI/CD workflows.",
+      "projects": "Projects:\n\nHTTP Proxy Server:\nUsed sockets to develop a HTTP proxy server.\n\nMini SD-WAN:\nMini SD-WAN to learn more about their inner workings.\n\nGoogle Docs Clone:\nA Google Docs clone enabling real-time collaboration using WebSockets and Operational Transformation.",
+      "skills": "Skills:\nGolang\nRust\nC / C++\nPython / FastAPI / Flask\nTypeScript / Node.js / Express\nSQL / PostgreSQL / MongoDB / Redis\nKafka / RabbitMQ\nµONOS / P4 (SDN Programming)\nSocket Programming / WebSockets\nMicroservice Architecture\nNetwork Security / Zero Trust Architecture\nDocker / Kubernetes\nAWS (EC2, S3, Lambda, Elastic Transcoder)\nCI/CD Pipelines\nReact\nAngular\nHtml\nCSS",
+      "contact": "Contact:\nEmail: boyulkim1@gmail.com\nGitHub: github.com/boyul-kim\nLinkedIn: linkedin.com/in/boyul-kim"
+    };
+
+    const filesystem = {
+      "~": {
+        type: "dir",
+        children: {
+          "about": { type: "dir", content: sectionContent.about },
+          "milestones": { type: "dir", content: sectionContent.milestones },
+          "projects": { type: "dir", content: sectionContent.projects },
+          "skills": { type: "dir", content: sectionContent.skills },
+          "contact": { type: "dir", content: sectionContent.contact }
+        }
+      }
+    };
+
+    let currentPath = ["~"];
+
+    function getDirObject(pathArray) {
+      let obj = filesystem["~"];
+      for (let i = 1; i < pathArray.length; i++) {
+        let name = pathArray[i];
+        if (obj.children && obj.children[name]) {
+          obj = obj.children[name];
+        } else {
+          return null;
+        }
+      }
+      return obj;
+    }
+
+    function updatePrompt() {
+      const promptSpan = document.querySelector(".terminal-prompt");
+      promptSpan.textContent = "user@portfolio:" + currentPath.join("/") + "$";
+    }
+
+    function changeDirectory(arg) {
+      if (!arg || arg.trim() === "") {
+        currentPath = ["~"];
+        return { path: currentPath };
+      }
+      const parts = arg.split("/");
+      const newPath = currentPath.slice();
+
+      for (let part of parts) {
+        if (part === "" || part === ".") {
+          continue;
+        }
+        if (part === "..") {
+          if (newPath.length > 1) {
+            newPath.pop();
+          }
+        } else {
+          const currentDirObj = getDirObject(newPath);
+          if (currentDirObj && currentDirObj.children && currentDirObj.children[part]) {
+            newPath.push(part);
+          } else {
+            return { error: "No such directory: " + part };
+          }
+        }
+      }
+      currentPath = newPath;
+      return { path: newPath };
+    }
+
+    function promptString() {
+      return "user@portfolio:" + currentPath.join("/") + "$";
+    }
+
+    function processCommand(command) {
+      const output = document.getElementById("terminal-output");
+      const cmd = command.trim();
+
+      output.innerHTML += "\n" + promptString() + " " + command;
+
+      if (cmd === "") {
+      } else if (cmd === "ls") {
+        if (currentPath.length === 1) {
+          const dirs = Object.keys(filesystem["~"].children).join("    ");
+          output.innerHTML += "\n" + dirs;
+        }
+        else if (currentPath.length === 2) {
+          output.innerHTML += "\nsection.txt";
+        }
+      } else if (cmd === "pwd") {
+        output.innerHTML += "\n" + currentPath.join("/");
+      } else if (cmd.startsWith("cd")) {
+        const arg = cmd.slice(2).trim();
+        const result = changeDirectory(arg);
+        if (result.error) {
+          output.innerHTML += "\n" + result.error;
+        } else {
+          updatePrompt();
+        }
+      } else if (cmd.toLowerCase() === "vi section.txt") {
+        if (currentPath.length === 2) {
+          const dirObj = getDirObject(currentPath);
+          if (dirObj && dirObj.content) {
+            output.innerHTML += "\n" + dirObj.content;
+          } else {
+            output.innerHTML += "\nNo file found.";
+          }
+        } else {
+          output.innerHTML += "\nYou must be inside a section directory to view its content.";
+        }
+      } else if (cmd === "exit") {
+        output.innerHTML += "\nExiting terminal mode...";
+        setTimeout(() => {
+          exitTerminalMode();
+        }, 500);
+      } else {
+        output.innerHTML += "\nCommand not found: " + cmd;
+      }
+
+      const terminal = document.getElementById("terminal");
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    function exitTerminalMode() {
+      document.getElementById("terminal").style.display = "none";
+      document.querySelector("header").style.display = "";
+      document.querySelector("main").style.display = "";
+      document.querySelector("footer").style.display = "";
+      // Reset terminal output.
+      document.getElementById("terminal-output").innerHTML =
+        "Welcome to the Linux Terminal Mode.\n" +
+        "Type ls to see available directories.\n" +
+        "Type cd <directory> to change into a directory.\n" +
+        "Type vi section.txt to view the section contents.\n" +
+        "Type cd .. to go back.\n" +
+        "Type exit to leave terminal mode.";
+      currentPath = ["~"];
+    }
+
+    const terminalInput = document.getElementById("terminal-input");
+    terminalInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const command = terminalInput.value;
+        processCommand(command);
+        terminalInput.value = "";
+      }
+    });
+
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle.addEventListener("click", () => {
+      document.querySelector("header").style.display = "none";
+      document.querySelector("main").style.display = "none";
+      document.querySelector("footer").style.display = "none";
+      const terminal = document.getElementById("terminal");
+      terminal.style.display = "flex";
+      terminal.scrollTop = terminal.scrollHeight;
+      terminalInput.focus();
+      currentPath = ["~"];
+      updatePrompt();
+    });
+
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+      contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Thank you for reaching out! I will get back to you soon.");
+        contactForm.reset();
+      });
+    }
+  </script>
+</body>
+</html>
